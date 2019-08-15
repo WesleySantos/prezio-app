@@ -3,16 +3,22 @@ import { Redirect } from 'react-router-dom';
 
 export default class SearchBar extends Component {
     state = {
-        searchInput: "",
+        searchInput: this.props.value || "",
         goToSearch: false
     }
     onSubmit = (e) => {
         e.preventDefault();
-        this.goToSearch = this.state.searchInput !== ""
+        this.setSearch()
     }
 
     onChange = (e) => { 
         this.setState({ searchInput: e.target.value });
+    }
+
+    setSearch = () => {
+        this.setState({
+            goToSearch: !!this.state.searchInput
+        })
     }
 
     render() {
@@ -26,10 +32,10 @@ export default class SearchBar extends Component {
                     <div className="control is-expanded">
                         <input className={`input ${isLarge} is-rounded`}
                             type="text" placeholder="e.g.: Arroz, Aceite..." style={{flex: 1}}
-                            onChange={this.onChange} value={this.props.value} />
+                            onChange={this.onChange} value={this.state.searchInput} onSubmit={this.onSubmit} />
                     </div>
                     <div className="control">
-                        <a className={`button ${isLarge} is-rounded`} 
+                        <a className={`button ${isLarge} is-rounded`} onClick={this.setSearch} 
                             href={"/search/" + this.state.searchInput}>Buscar</a>
                     </div>
                 </div>
