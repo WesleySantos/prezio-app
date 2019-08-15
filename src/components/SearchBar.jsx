@@ -27,8 +27,8 @@ export default class SearchBar extends Component {
                             type="text" placeholder="e.g.: Arroz, Aceite..." style={{flex: 1}}
                             onChange={this.onChange} />
                     </div>
-                    <div class="control">
-                        <a class="button is-large is-rounded" 
+                    <div className="control">
+                        <a className="button is-large is-rounded" 
                             href={"/search/" + this.state.searchInput}>Buscar</a>
                     </div>
                 </div>
