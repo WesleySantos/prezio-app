@@ -3,7 +3,7 @@ import ProductPlaces from "./ProductPlaces";
 
 class ProductList extends Component {
   state = {
-    products: require("./products.json")
+    products: require("../data/products.json")
   };
   render() {
     const { products } = this.state.products;

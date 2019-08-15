@@ -10,7 +10,7 @@ export default class Home extends Component {
             <section className="hero is-info is-medium is-bold is-fullheight">
                 <div className="intro column is-8 is-offset-2">
                     <LogoHeader />
-                    <SearchBar />
+                    <SearchBar large/>
                     <div className="columns">
                         <CurrencyPrice className="column has-text-centered" />
                         <FuelPrice className="column has-text-centered" />
