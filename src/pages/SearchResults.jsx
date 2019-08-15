@@ -5,23 +5,24 @@ import HeaderBar from '../components/HeaderBar';
 
 export default class SearchResults extends Component {
     state = {
-        products: []
+        productsSnapshot: require("../data/products.json").products,
+        filteredProducts: []
     }
 
-    constructor(props) {
-        super(props)
-        const { products } = require("../data/products.json")
-        this.state.products = products
-    }
+    filterProducts = (criteria, products) => products.filter((prod) => {
+        return prod.info.some((i) => i.make.startsWith(criteria)) 
+            || prod.category.startsWith(criteria);
+    })
 
     render() {
+        const { criteria } = this.props.criteria.params || ""
+        const products = this.filterProducts(criteria, this.state.productsSnapshot)
         return (
             <section className="hero is-info is-medium is-bold is-fullheight">
                 <div className="intro column is-8 is-offset-2">
-                    <HeaderBar />
-                    <div>
-                        <CategoryDir />
-                        <Results matches={this.state.products} />
+                    <HeaderBar criteria={criteria} />
+                    <div className="columns" style={{margin: 10}}>
+                        <Results className="column is-three-quarters" matches={products} />
                     </div>
                 </div>
             </section>
