@@ -11,7 +11,7 @@ export default class SearchResults extends Component {
 
     filterProducts = (criteria, products) => products.filter((prod) => {
         return prod.info.some((i) => i.make.startsWith(criteria)) 
-        || prod.category.startsWith(criteria);
+            || prod.category.startsWith(criteria);
     })
 
     render() {
@@ -20,10 +20,10 @@ export default class SearchResults extends Component {
         return (
             <section className="hero is-info is-medium is-bold is-fullheight">
                 <div className="intro column is-8 is-offset-2">
-                    <HeaderBar />
-                    <div>
-                        <CategoryDir />
-                        <Results matches={products} />
+                    <HeaderBar criteria={criteria} />
+                    <div className="columns" style={{margin: 10}}>
+                        <CategoryDir className="column is-one-quarter" />
+                        <Results className="column is-three-quarters" matches={products} />
                     </div>
                 </div>
             </section>

@@ -19,16 +19,17 @@ export default class SearchBar extends Component {
         if(this.state.goToSearch) {
             return <Redirect to={`/search/${this.state.searchInput}`} />
         }
+        const isLarge = `${this.props.large ? "is-large" : ""}`
         return (
             <form onSubmit={this.onSubmit} style={{margin: 10}}>
                 <div className="field has-addons">
                     <div className="control is-expanded">
-                        <input className="input is-large is-rounded" 
+                        <input className={`input ${isLarge} is-rounded`}
                             type="text" placeholder="e.g.: Arroz, Aceite..." style={{flex: 1}}
-                            onChange={this.onChange} />
+                            onChange={this.onChange} value={this.props.value} />
                     </div>
                     <div className="control">
-                        <a className="button is-large is-rounded" 
+                        <a className={`button ${isLarge} is-rounded`} 
                             href={"/search/" + this.state.searchInput}>Buscar</a>
                     </div>
                 </div>
