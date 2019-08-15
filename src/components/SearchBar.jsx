@@ -11,7 +11,9 @@ export default class SearchBar extends Component {
         this.goToSearch = this.state.searchInput !== ""
     }
 
-    onChange = (e) => this.setState({ searchInput: e.target.value });
+    onChange = (e) => { 
+        this.setState({ searchInput: e.target.value });
+    }
 
     render() {
         if(this.state.goToSearch) {
