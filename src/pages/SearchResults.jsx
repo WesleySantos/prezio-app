@@ -15,14 +15,13 @@ export default class SearchResults extends Component {
     })
 
     render() {
-        const { criteria } = this.props.criteria.params
+        const { criteria } = this.props.criteria.params || ""
         const products = this.filterProducts(criteria, this.state.productsSnapshot)
         return (
             <section className="hero is-info is-medium is-bold is-fullheight">
                 <div className="intro column is-8 is-offset-2">
                     <HeaderBar criteria={criteria} />
                     <div className="columns" style={{margin: 10}}>
-                        <CategoryDir className="column is-one-quarter" />
                         <Results className="column is-three-quarters" matches={products} />
                     </div>
                 </div>
